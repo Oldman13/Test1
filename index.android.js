@@ -85,6 +85,7 @@ fetchData() {
         <View style={styles.rightContainer}>
           <Text style={styles.title}>{movie.title}</Text>
           <Text style={styles.year}>{movie.year}</Text>
+		  <Text style={styles.runtime}>{"RunTime: "+movie.runtime}</Text>
         </View>
       </View>
     );
@@ -101,6 +102,7 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+	borderWidth: 1,
   },
    rightContainer: {
     flex: 1,
@@ -112,13 +114,23 @@ var styles = StyleSheet.create({
   },
   year: {
 	fontSize: 12,
+	fontWeight: 'bold', 
+	color: 'red',
     textAlign: 'center',
+  },
+  runtime: {
+	fontSize: 12,
+	//fontWeight: 'bold', 
+	//color: 'yelloy',
+    textAlign: 'center', 
   },
   thumbnail: {
     width: 53,
     height: 81,
-	marginLeft: 5,
-	marginTop: 5,
+	//marginLeft: 5,
+	//marginTop: 5,
+	//marginBottom: 5,
+	margin: 5,
   },
   listView: {
     paddingTop: 8,
