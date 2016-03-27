@@ -10,7 +10,8 @@ import React, {
   ListView,
   StyleSheet,
   Text,
-  View
+  View,
+  Icon
 } from 'react-native';
 
 /**
@@ -21,7 +22,9 @@ var REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/maste
 
 var MOCKED_MOVIES_DATA = [
   {title: 'Title', year: '2015', posters: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}},
-];
+ ];
+
+var icon = require('./ic_launcher.png');
 
 class MyProject extends Component {
 
@@ -68,8 +71,12 @@ fetchData() {
   renderLoadingView() {
     return (
       <View style={styles.container}>
-        <Text>
-          Loading movies...
+	    <Image 
+		  source={icon}
+		  style={styles.myicon}
+		/>
+		<Text>
+		  Loading movies...
         </Text>
       </View>
     );
@@ -78,11 +85,11 @@ fetchData() {
   renderMovie(movie) {
     return (
       <View style={styles.container}>
-        <Image
+	    <Image
           source={{uri: movie.posters.thumbnail}}
           style={styles.thumbnail}
         />
-        <View style={styles.rightContainer}>
+        <View style={styles.rightContainer} accessible={true}>
           <Text style={styles.title}>{movie.title}</Text>
           <Text style={styles.year}>{movie.year}</Text>
 		  <Text style={styles.runtime}>{"RunTime: "+movie.runtime}</Text>
@@ -120,21 +127,22 @@ var styles = StyleSheet.create({
   },
   runtime: {
 	fontSize: 12,
-	//fontWeight: 'bold', 
-	//color: 'yelloy',
     textAlign: 'center', 
   },
   thumbnail: {
     width: 53,
     height: 81,
-	//marginLeft: 5,
-	//marginTop: 5,
-	//marginBottom: 5,
 	margin: 5,
+  },
+  myicon: {
+	width: 32,
+    height: 32, 
+    margin: 5,	
   },
   listView: {
     paddingTop: 8,
     backgroundColor: '#F5FCFF',
+	paddingBottom: 20,
   },
 });
 
